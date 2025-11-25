@@ -29,8 +29,8 @@ const Navbar = () => {
   return (
     <nav className="border-b">
       <Container className="flex h-20 justify-between items-center">
+        {/* LOGO */}
         <Link href="/">
-          {/* <h1 className="font-black text-xl">TODO</h1> */}
           <Image
             src="/todo_logo.png"
             alt="todo logo"
@@ -38,29 +38,31 @@ const Navbar = () => {
             height={100}
           />
         </Link>
+
+        {/* RIGHT SIDE */}
         <div className="flex gap-5">
-          {!user && !loading && (
-            <div className="flex gap-5">
-              {guestLinks.map((item) => (
-                <Link key={item.href} href={item.href}>
-                  {item.label}
-                </Link>
-              ))}
+          {/* Default (before loading finished) */}
+          {!user && (
+            <div className="flex gap-5 opacity-100">
+              <Link href="/login">Login</Link>
+              <Link href="/register">Register</Link>
             </div>
           )}
-          {user && (
+
+          {/* After loading complete and authenticated */}
+          {!loading && user && (
             <div className="flex gap-5">
               <p>
                 Name: <span className="capitalize font-bold">{user.name}</span>
               </p>
-
-              {user && <LogoutButton />}
+              <LogoutButton />
             </div>
           )}
         </div>
       </Container>
     </nav>
   );
+
 };
 
 export default Navbar;

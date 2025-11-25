@@ -1,10 +1,19 @@
 "use client";
 
+import { useEffect } from "react";
 import Todo from "../components/Todo";
 import { useUser } from "../context/UserContext";
 import Link from "next/link";
 
 export default function Home() {
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetch("https://todoapi-qc55.onrender.com").catch(() => {});
+    }, 5 * 60 * 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   const { user, checkingAuth, loading } = useUser();
 
   if (loading || checkingAuth) return null;
