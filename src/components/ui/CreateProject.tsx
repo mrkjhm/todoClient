@@ -45,7 +45,7 @@ const CreateProject = ({
 
   return (
     <>
-      <div className="border border-[#b9ffb3] rounded-md flex items-center w-[400px] mb-15">
+      <div className="border border-[#b9ffb3] rounded-md flex items-center sm:w-[400px] w-full mb-15 transition-all duration-500">
         <input
           type="text"
           className="px-3 py-2 w-full focus:outline-none"

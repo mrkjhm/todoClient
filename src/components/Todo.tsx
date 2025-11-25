@@ -239,14 +239,14 @@ const TodoPage = () => {
   }, []);
 
   return (
-    <div className="flex flex-col w-full">
+    <Container className="flex flex-col w-full">
       <div className="flex flex-col items-center">
         <h1 className="text-4xl font-bold text-center mb-5 text-linear-to-r from-[#22fff1] to-[#b9ffb3]">
           Todos
         </h1>
         <CreateProject onProjectCreated={fetchProjects} />
       </div>
-      <Container className="grid grid-cols-3 w-full gap-5">
+      <section className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-5">
         <Modal open={openModal} onClose={handleCloseModal}>
           <h2 className="text-lg font-bold mb-3">
             {modalMode === "create" ? "Create Todo" : "Update Todo"}
@@ -331,8 +331,8 @@ const TodoPage = () => {
             </div>
           ))
         )}
-      </Container>
-    </div>
+      </section>
+    </Container>
   );
 };
 

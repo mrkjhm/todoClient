@@ -34,7 +34,7 @@ const Navbar = () => {
           <Image
             src="/todo_logo.png"
             alt="todo logo"
-            width={150}
+            width={120}
             height={100}
           />
         </Link>
@@ -62,7 +62,6 @@ const Navbar = () => {
       </Container>
     </nav>
   );
-
 };
 
 export default Navbar;
