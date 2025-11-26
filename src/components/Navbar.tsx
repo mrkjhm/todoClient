@@ -15,16 +15,6 @@ interface NavItem {
 const Navbar = () => {
   const { user, loading } = useUser();
 
-  const guestLinks = [
-    {
-      label: "Login",
-      href: "/login",
-    },
-    {
-      label: "Register",
-      href: "/register",
-    },
-  ];
 
   return (
     <nav className="border-b">
@@ -34,8 +24,10 @@ const Navbar = () => {
           <Image
             src="/todo_logo.png"
             alt="todo logo"
-            width={120}
+            width={95}
             height={100}
+            className="w-auto h-auto"
+            priority
           />
         </Link>
 

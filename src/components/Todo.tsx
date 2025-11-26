@@ -35,7 +35,6 @@ const TodoPage = () => {
   const [openModal, setOpenModal] = useState(false);
   const [title, setTitle] = useState("");
 
-  const { user } = useUser();
 
   // modal mode may condition kung create or edit(pero default niya create)
   const [modalMode, setModalMode] = useState<"create" | "edit">("create");
