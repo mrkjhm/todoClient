@@ -80,7 +80,6 @@ const TodoPage = () => {
       }
 
       setProjects(data.projects || []);
-      console.log("Projects fetched:", data.projects);
     } catch (error) {
       console.error("Error fetching projects:", error);
       setProjects([]);
@@ -97,7 +96,6 @@ const TodoPage = () => {
       toast.error("No project selected");
       return;
     }
-    console.log("Creating todo in project ID:", selectedProjectId);
     try {
       const res = await fetch(`${API_URL}/api/todos/${selectedProjectId}`, {
         method: "POST",
