@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Todo from "../components/Todo";
 import { useUser } from "../context/UserContext";
 import Link from "next/link";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 export default function Home() {
   useEffect(() => {
@@ -16,7 +17,14 @@ export default function Home() {
 
   const { user, checkingAuth, loading } = useUser();
 
-  if (loading || checkingAuth) return null;
+  if (loading || checkingAuth) {
+    return (
+      <section className="flex flex-col items-center justify-center min-h-[70vh] px-5">
+        <LoadingSpinner />
+        <p className="text-gray-400 mt-4">Loading…</p>
+      </section>
+    );
+  }
 
   if (!user) {
     return (
@@ -27,7 +35,7 @@ export default function Home() {
 
         <Link
           href="/login"
-          className="px-4 py-2  bg-linear-to-r from-[#22fff1] to-[#b9ffb3] text-black rounded-md w-[300px] text-center"
+          className="px-4 py-2 bg-linear-to-r from-[#22fff1] to-[#b9ffb3] text-black rounded-md w-[300px] text-center"
         >
           Login again
         </Link>

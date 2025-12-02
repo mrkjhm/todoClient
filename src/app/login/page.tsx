@@ -13,10 +13,13 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   const handleLogin = async () => {
+    setLoading(true);
+
     try {
       const res = await fetch(`${API_URL}/api/auth/login`, {
         method: "POST",
@@ -44,6 +47,8 @@ const LoginPage = () => {
     } catch (error) {
       console.error("Login error", error);
       toast.error("Something went wrong!");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -86,7 +91,7 @@ const LoginPage = () => {
 
         {error && <p className="text-sm text-red-500 py-2">{error}</p>}
         <div>
-          <LoginButton onClick={handleLogin} />
+          <LoginButton onClick={handleLogin} loading={loading} />
         </div>
       </div>
     </div>
